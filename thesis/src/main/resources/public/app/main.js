@@ -19,7 +19,7 @@
     }
 });
 
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'modules/securityservice', 'bootstrap', 'modules/kocustombindings'],  function (system, app, viewLocator, securityService) {
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'bootstrap', 'modules/kocustombindings'],  function (system, app, viewLocator) {
     //>>excludeStart("build", true);
     system.debug(true);
     //>>excludeEnd("build");

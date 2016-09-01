@@ -1,4 +1,4 @@
-package com.chua.evergrocery.database.entity.base;
+package com.thesis.monitor.database.entity.base;
 
 /**
  * @version 1.0, Jan 18, 2016

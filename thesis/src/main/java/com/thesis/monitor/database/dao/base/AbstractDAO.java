@@ -18,13 +18,13 @@ import org.hibernate.transform.ResultTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.chua.evergrocery.database.entity.base.BaseID;
-import com.chua.evergrocery.database.entity.base.IEntity;
-import com.chua.evergrocery.exceptions.DatabaseException;
-import com.chua.evergrocery.objects.Assertion;
-import com.chua.evergrocery.objects.ObjectList;
-import com.chua.evergrocery.objects.SortOrder;
-import com.chua.evergrocery.utility.ClassHelper;
+import com.thesis.monitor.database.entity.base.BaseID;
+import com.thesis.monitor.database.entity.base.IEntity;
+import com.thesis.monitor.exceptions.DatabaseException;
+import com.thesis.monitor.objects.Assertion;
+import com.thesis.monitor.objects.ObjectList;
+import com.thesis.monitor.objects.SortOrder;
+import com.thesis.monitor.utility.ClassHelper;
 
 /**
  * This class provides the basic functionality of the hibernate. This class is intended

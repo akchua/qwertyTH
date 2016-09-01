@@ -1,14 +1,14 @@
-package com.chua.evergrocery.database.prototype;
+package com.thesis.monitor.database.prototype;
 
 import java.io.Serializable;
 import java.util.List;
 
-import com.chua.evergrocery.database.dao.base.DeletableDAO;
-import com.chua.evergrocery.database.dao.base.ReadableDAO;
-import com.chua.evergrocery.database.dao.base.ReloadableDAO;
-import com.chua.evergrocery.database.dao.base.WritableDAO;
-import com.chua.evergrocery.database.entity.base.BaseID;
-import com.chua.evergrocery.objects.ObjectList;
+import com.thesis.monitor.database.dao.base.DeletableDAO;
+import com.thesis.monitor.database.dao.base.ReadableDAO;
+import com.thesis.monitor.database.dao.base.ReloadableDAO;
+import com.thesis.monitor.database.dao.base.WritableDAO;
+import com.thesis.monitor.database.entity.base.BaseID;
+import com.thesis.monitor.objects.ObjectList;
 
 /**
  * 

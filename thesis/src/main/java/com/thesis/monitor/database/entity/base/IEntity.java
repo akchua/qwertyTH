@@ -1,4 +1,4 @@
-package com.chua.evergrocery.database.entity.base;
+package com.thesis.monitor.database.entity.base;
 
 import java.io.Serializable;
 

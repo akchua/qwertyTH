@@ -2,8 +2,8 @@ package com.thesis.monitor.database.dao.base;
 
 import java.io.Serializable;
 
-import com.chua.evergrocery.database.entity.base.BaseID;
-import com.chua.evergrocery.database.entity.base.IEntity;
+import com.thesis.monitor.database.entity.base.BaseID;
+import com.thesis.monitor.database.entity.base.IEntity;
 
 /**
  * The DAO provides common process (or methods) used to manipulate a data from and to a

@@ -1,4 +1,4 @@
-package com.chua.evergrocery.utility;
+package com.thesis.monitor.utility;
 
 import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;

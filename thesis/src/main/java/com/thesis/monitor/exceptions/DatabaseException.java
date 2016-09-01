@@ -1,4 +1,4 @@
-package com.chua.evergrocery.exceptions;
+package com.thesis.monitor.exceptions;
 
 /**
  * General database error occurred.

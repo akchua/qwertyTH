@@ -1,4 +1,4 @@
-package com.chua.evergrocery.exceptions;
+package com.thesis.monitor.exceptions;
 
 /**
  * This exception is thrown when the persistent instance is out-dated.

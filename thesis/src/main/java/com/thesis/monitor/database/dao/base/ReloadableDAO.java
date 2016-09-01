@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 import org.hibernate.HibernateException;
 
-import com.chua.evergrocery.database.entity.base.IEntity;
-import com.chua.evergrocery.exceptions.DatabaseException;
+import com.thesis.monitor.database.entity.base.IEntity;
+import com.thesis.monitor.exceptions.DatabaseException;
 
 /**
  * A DAO interface that contains methods for reloading, refreshing data only.

@@ -2,7 +2,7 @@ package com.thesis.monitor.database.dao.base;
 
 import java.io.Serializable;
 
-import com.chua.evergrocery.database.entity.base.IEntity;
+import com.thesis.monitor.database.entity.base.IEntity;
 
 /**
  * A DAO interface that contains methods for reading data only.

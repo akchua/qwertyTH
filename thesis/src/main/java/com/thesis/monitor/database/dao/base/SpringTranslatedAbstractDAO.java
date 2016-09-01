@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 
-import com.chua.evergrocery.database.entity.base.IEntity;
+import com.thesis.monitor.database.entity.base.IEntity;
 
 /**
  * A translated DAO that uses spring DAO support to open and release a hibernate session. 

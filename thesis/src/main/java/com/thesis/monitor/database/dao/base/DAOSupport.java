@@ -8,8 +8,8 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projection;
 import org.hibernate.transform.ResultTransformer;
 
-import com.chua.evergrocery.exceptions.DatabaseException;
-import com.chua.evergrocery.objects.ObjectList;
+import com.thesis.monitor.exceptions.DatabaseException;
+import com.thesis.monitor.objects.ObjectList;
 
 /**
  * A interface to support a DAO implementation. The methods declared in this interface

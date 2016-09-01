@@ -1,9 +1,9 @@
-package com.chua.evergrocery.database.dao;
+package com.thesis.monitor.database.dao;
 
 import java.io.Serializable;
 
-import com.chua.evergrocery.database.entity.base.BaseID;
-import com.chua.evergrocery.database.prototype.Prototype;
+import com.thesis.monitor.database.entity.base.BaseID;
+import com.thesis.monitor.database.prototype.Prototype;
 
 /**
  * The DAO interface.
@@ -16,7 +16,7 @@ import com.chua.evergrocery.database.prototype.Prototype;
  *
  */
 public interface DAO<T extends BaseID<ID>, ID extends Serializable>
-		extends Prototype<T, ID>, com.chua.evergrocery.database.dao.base.DAO<T, ID>
+		extends Prototype<T, ID>, com.thesis.monitor.database.dao.base.DAO<T, ID>
 {
 
 }

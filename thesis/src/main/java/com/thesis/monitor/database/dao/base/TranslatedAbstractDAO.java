@@ -6,9 +6,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.StaleStateException;
 import org.hibernate.criterion.Order;
 
-import com.chua.evergrocery.database.entity.base.IEntity;
-import com.chua.evergrocery.exceptions.DatabaseException;
-import com.chua.evergrocery.exceptions.OutdatedVersionException;
+import com.thesis.monitor.database.entity.base.IEntity;
+import com.thesis.monitor.exceptions.DatabaseException;
+import com.thesis.monitor.exceptions.OutdatedVersionException;
 
 /**
  * A subclass of {@link AbstractDAO} that translates the HibernateException to a

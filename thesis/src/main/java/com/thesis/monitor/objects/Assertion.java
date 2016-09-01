@@ -1,4 +1,4 @@
-package com.chua.evergrocery.objects;
+package com.thesis.monitor.objects;
 
 /**
  * The assertion utility.

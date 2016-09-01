@@ -1,9 +1,9 @@
-package com.chua.evergrocery.database.service;
+package com.thesis.monitor.database.service;
 
 import java.io.Serializable;
 
-import com.chua.evergrocery.database.entity.base.BaseID;
-import com.chua.evergrocery.database.prototype.Prototype;
+import com.thesis.monitor.database.entity.base.BaseID;
+import com.thesis.monitor.database.prototype.Prototype;
 
 /**
  * All service classes will implement this interface

@@ -1,4 +1,4 @@
-package com.chua.evergrocery.database.service.impl;
+package com.thesis.monitor.database.service.impl;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 
-import com.chua.evergrocery.database.dao.DAO;
-import com.chua.evergrocery.database.entity.base.BaseID;
-import com.chua.evergrocery.database.service.Service;
-import com.chua.evergrocery.exceptions.DatabaseException;
-import com.chua.evergrocery.objects.ObjectList;
+import com.thesis.monitor.database.dao.DAO;
+import com.thesis.monitor.database.entity.base.BaseID;
+import com.thesis.monitor.database.service.Service;
+import com.thesis.monitor.exceptions.DatabaseException;
+import com.thesis.monitor.objects.ObjectList;
 
 /**
  * We build a face for DAOs

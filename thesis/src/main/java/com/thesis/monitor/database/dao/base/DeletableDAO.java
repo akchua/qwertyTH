@@ -3,7 +3,7 @@ package com.thesis.monitor.database.dao.base;
 import java.io.Serializable;
 import java.util.Collection;
 
-import com.chua.evergrocery.database.entity.base.IEntity;
+import com.thesis.monitor.database.entity.base.IEntity;
 
 /**
  * A DAO interface that is for deleting objects.

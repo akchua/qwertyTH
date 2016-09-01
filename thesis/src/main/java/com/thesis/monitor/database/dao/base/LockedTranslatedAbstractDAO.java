@@ -7,8 +7,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.hibernate.criterion.Order;
 
-import com.chua.evergrocery.database.entity.base.BaseID;
-import com.chua.evergrocery.database.entity.base.IEntity;
+import com.thesis.monitor.database.entity.base.BaseID;
+import com.thesis.monitor.database.entity.base.IEntity;
 
 /**
  * This class provides the basic functionality of the hibernate. This class is intended

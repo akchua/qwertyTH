@@ -1,4 +1,4 @@
-package com.chua.evergrocery.database.dao.impl;
+package com.thesis.monitor.database.dao.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,11 +13,11 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 
-import com.chua.evergrocery.database.dao.DAO;
-import com.chua.evergrocery.database.dao.base.SpringHibernateDAOSupport;
-import com.chua.evergrocery.database.entity.base.BaseID;
-import com.chua.evergrocery.objects.Assertion;
-import com.chua.evergrocery.objects.ObjectList;
+import com.thesis.monitor.database.dao.DAO;
+import com.thesis.monitor.database.dao.base.SpringHibernateDAOSupport;
+import com.thesis.monitor.database.entity.base.BaseID;
+import com.thesis.monitor.objects.Assertion;
+import com.thesis.monitor.objects.ObjectList;
 
 /**
  * This class provides the basic functionality of the hibernate. This class is intended to be
@@ -33,7 +33,7 @@ import com.chua.evergrocery.objects.ObjectList;
  * @see java.io.Serializable
  */
 public abstract class AbstractDAO<T extends BaseID<ID>, ID extends Serializable>
-		extends com.chua.evergrocery.database.dao.base.AbstractDAO<T, ID>
+		extends com.thesis.monitor.database.dao.base.AbstractDAO<T, ID>
 		implements DAO<T, ID>
 {
 	/** The logger for this class. */

@@ -3,12 +3,18 @@
 	    { route: ['', 'home'], moduleId: 'viewmodels/home', title: 'Home', nav: true }
 	];
 	
+	var adminroute = [
+	    { route: 'board', moduleId: 'viewmodels/admin/board', title: 'Board', nav: true, hash: '#board' }              
+	];
+	
     return {
         router: router,
         
         activate: function () {
         	var self = this;
         	var routes = homeroute;
+        	
+        	routes = routes.concat(adminroute);
         	
         	$.each(routes, function(index, route) {
                 if (route.childRoutes === undefined)

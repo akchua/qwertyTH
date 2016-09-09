@@ -40,11 +40,13 @@
 
 		<property name="annotatedPackages">
 			<list>
+				<value>com.thesis.monitor.database.entity</value>
 			</list>
 		</property>
 
 		<property name="annotatedClasses">
 			<list>
+				<value>com.thesis.monitor.database.entity.Account</value>
 			</list>
 		</property>
 	</bean>

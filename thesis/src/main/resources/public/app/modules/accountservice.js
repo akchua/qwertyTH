@@ -4,7 +4,7 @@ define(['jquery'], function ($) {
 			return $.ajax({
 				url: '/services/account/list',
 				data: {
-					pageNumber: pageNumber,
+					pageNumber: pageNumber - 1,
 					searchKey, searchKey
 				}
 			});

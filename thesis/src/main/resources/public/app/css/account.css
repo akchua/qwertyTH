@@ -1,0 +1,19 @@
+.wrap{
+	margin: 5% auto;
+	overflow: auto;
+}
+
+.alignLeft{
+	margin: 0 0 0 15%;
+	float: left;
+}
+
+.alignRight{
+	margin: 0 15% 0 0;
+	float:right;
+}
+
+.tableResults{
+	margin: 5% auto;
+	width: 50%;
+}

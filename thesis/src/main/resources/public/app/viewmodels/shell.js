@@ -4,7 +4,7 @@
 	];
 	
 	var adminroute = [
-	    { route: 'board', moduleId: 'viewmodels/admin/board', title: 'Board', nav: true, hash: '#board' }              
+	    { route: 'account', moduleId: 'viewmodels/admin/account', title: 'Account', nav: true, hash: '#account' }              
 	];
 	
     return {

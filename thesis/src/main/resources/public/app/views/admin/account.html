@@ -6,8 +6,8 @@
 			</div>
 			<div class = "col-md-6 text-center">
 				<form class="form-inline">
-					<input type="search" id="search" placeholder="Search" class="form-control">
-					<button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
+					<input data-bind="value: searchKey" type="search" id="search" placeholder="Search" class="form-control">
+					<button data-bind="click: search" type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
 				</form>
 			</div>
 		</div>
@@ -22,11 +22,11 @@
 							<th>Account Type</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody data-bind="foreach: { data: accountList, as: 'account' } ">
 						<tr>
-							<td>123</td>
-							<td>Bla</td>
-							<td>Admin</td>
+							<td data-bind="text: account.id"></td>
+							<td data-bind="text: account.username"></td>
+							<td data-bind="text: account.accountType"></td>
 							<td>
 								<button type="button" class="btn btn-default glyphicon glyphicon-pencil"></button>
 								<button type="button" class="btn btn-default glyphicon glyphicon-remove"></button>
@@ -41,6 +41,6 @@
 			<div class = "col-md-6 text-center">
 				<button type="button" class="btn btn-default glyphicon glyphicon-plus"> Add Account</button>
 			</div>
-				<div data-bind="widget: { kind: 'pager', config: { numberOfPagesToShow: 5, itemsPerPage: 10, totalItems: 100, currentPage: 1 } }" class="col-md-6 text-center"></div>
+				<div data-bind="widget: { kind: 'pager', config: { numberOfPagesToShow: 5, itemsPerPage: itemsPerPage, totalItems: totalItems, currentPage: currentPage } }" class="col-md-6 text-center"></div>
 		</div>
 	</div>

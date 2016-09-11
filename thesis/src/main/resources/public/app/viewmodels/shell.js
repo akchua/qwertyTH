@@ -10,6 +10,8 @@
     return {
         router: router,
         
+        account: app.user,
+        
         activate: function () {
         	var self = this;
         	var routes = homeroute;

@@ -6,6 +6,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
 import com.thesis.monitor.rest.endpoint.AccountEndpoint;
+import com.thesis.monitor.rest.endpoint.SecurityEndpoint;
 
 @Component
 @ApplicationPath("services")
@@ -16,5 +17,6 @@ public class JerseyConfig extends ResourceConfig {
 		
 		// Register End Points
 		register(AccountEndpoint.class);
+		register(SecurityEndpoint.class);
 	}
 }

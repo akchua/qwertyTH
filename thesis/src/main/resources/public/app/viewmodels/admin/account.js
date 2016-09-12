@@ -1,4 +1,4 @@
-define(['knockout', 'modules/accountservice'], function (ko, accountService) {
+define(['knockout', 'modules/accountservice', 'viewmodels/admin/accountForm'], function (ko, accountService, AccountForm) {
     var Account = function() {
     	this.accountList = ko.observable();
     	
@@ -35,6 +35,14 @@ define(['knockout', 'modules/accountservice'], function (ko, accountService) {
     	
     	self.currentPage(1);
     	self.refreshAccountList();
+    };
+    
+    Account.prototype.add = function() {
+    	var self = this;
+    	
+		AccountForm.show(new Object()).then(function() {
+			self.refreshAccountList();
+		});
     };
     
     return Account;

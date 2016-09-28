@@ -1,4 +1,4 @@
-package com.thesis.monitor.database.enums;
+package com.thesis.monitor.enums;
 
 public enum AccountType {
 	

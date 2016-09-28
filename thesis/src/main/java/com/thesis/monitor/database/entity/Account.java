@@ -8,7 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 import com.thesis.monitor.database.entity.base.BaseObject;
-import com.thesis.monitor.database.enums.AccountType;
+import com.thesis.monitor.enums.AccountType;
 
 @Entity(name = "Account")
 @Table(name = Account.TABLE_NAME)

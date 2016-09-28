@@ -15,6 +15,13 @@ define(['jquery'], function ($) {
     				password: password
     			}
     		});
+    	},
+    	
+    	logout: function() {
+    		return $.ajax({
+    			url: '/services/security/logout',
+    			method: 'POST'
+    		});
     	}
     };
 });

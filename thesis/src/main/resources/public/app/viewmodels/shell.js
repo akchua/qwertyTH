@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'durandal/app'], function (router, app) {
+﻿define(['plugins/router', 'durandal/app', 'modules/securityservice'], function (router, app, securityService) {
 	var homeroute = [
 	    { route: ['', 'home'], moduleId: 'viewmodels/home', title: 'Home', nav: true }
 	];
@@ -9,6 +9,8 @@
 	
     return {
         router: router,
+        
+        account: app.user,
         
         activate: function () {
         	var self = this;
@@ -32,6 +34,12 @@
             router.map(routes).buildNavigationModel();
             
             return router.activate();
+        },
+        
+        logout: function() {
+        	securityService.logout().done(function() {
+        		location.href = '/';
+        	});
         }
     };
 });

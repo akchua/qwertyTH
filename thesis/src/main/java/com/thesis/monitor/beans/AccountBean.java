@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 
 import com.thesis.monitor.database.entity.Account;
-import com.thesis.monitor.database.enums.AccountType;
+import com.thesis.monitor.enums.AccountType;
 
 public class AccountBean extends org.springframework.security.core.userdetails.User {
 

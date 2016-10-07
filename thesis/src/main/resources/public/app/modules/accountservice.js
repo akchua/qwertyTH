@@ -17,6 +17,16 @@ define(['jquery'], function ($) {
 					accountId: accountId
 				}
 			});
+		},
+		
+		saveAccount: function(accountFormData) {
+			return $.ajax({
+				url: '/services/account/save',
+				method: 'POST',
+				data: {
+					accountFormData: accountFormData
+				}
+			});
 		}
 	};
 });

@@ -20,6 +20,17 @@ define(['plugins/dialog', 'durandal/app', 'knockout'], function(dialog, app, ko)
 		self.AccountFormModel.accountType(self.account.accountType);
 	};
 	
+	AccountForm.prototype.save = function() {
+		var self = this;
+		
+		accountService.saveAccount(ko.toJSON(self.accountFormModel)).done(function(result) {
+			if(result.success) {
+				dialog.close(self);
+			}
+			app.showMessage(result.message);
+		});
+	};
+	
 	AccountForm.show = function(account) {
 		return dialog.show(new AccountForm(account));
 	};

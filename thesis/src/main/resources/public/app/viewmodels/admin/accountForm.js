@@ -1,8 +1,14 @@
-define(['plugins/dialog', 'durandal/app', 'knockout'], function(dialog, app, ko) {
-	var AccountForm = function(account) {
+define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/accountservice'], function(dialog, app, ko, accountService) {
+	var AccountForm = function(preTitle, account) {
+		this.preTitle = preTitle;
+
 		this.account = account;
 		
-		this.AccountFormModel = {
+		this.accountTypeList = ko.observable();
+		
+		this.itemsPerPageList = ko.observableArray([5, 10, 15, 20]);
+		
+		this.accountFormModel = {
 			id: ko.observable(),
 			username: ko.observable(),
 			password: ko.observable(),
@@ -14,10 +20,15 @@ define(['plugins/dialog', 'durandal/app', 'knockout'], function(dialog, app, ko)
 	AccountForm.prototype.activate = function() {
 		var self = this;
 		
-		self.AccountFormModel.id(self.account.id);
-		self.AccountFormModel.username(self.account.username);
-		self.AccountFormModel.itemsPerPage(self.account.itemsPerPage);
-		self.AccountFormModel.accountType(self.account.accountType);
+		self.accountFormModel.id(self.account.id);
+		self.accountFormModel.username(self.account.username);
+		self.accountFormModel.itemsPerPage(self.account.itemsPerPage);
+		self.accountFormModel.accountType(self.account.accountType);
+		
+		accountService.getAccountTypeList().done(function(accountTypeList) {
+			self.accountTypeList(accountTypeList);
+			self.accountFormModel.accountType(self.account.accountType);
+		});
 	};
 	
 	AccountForm.prototype.save = function() {
@@ -31,8 +42,8 @@ define(['plugins/dialog', 'durandal/app', 'knockout'], function(dialog, app, ko)
 		});
 	};
 	
-	AccountForm.show = function(account) {
-		return dialog.show(new AccountForm(account));
+	AccountForm.show = function(preTitle, account) {
+		return dialog.show(new AccountForm(preTitle, account));
 	};
 	
 	AccountForm.prototype.cancel = function() {

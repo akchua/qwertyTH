@@ -19,6 +19,12 @@ define(['jquery'], function ($) {
 			});
 		},
 		
+		getAccountTypeList: function() {
+			return $.ajax({
+				url: '/services/account/accounttype'
+			});
+		},
+		
 		saveAccount: function(accountFormData) {
 			return $.ajax({
 				url: '/services/account/save',

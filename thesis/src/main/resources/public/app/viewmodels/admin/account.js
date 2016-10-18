@@ -40,9 +40,19 @@ define(['knockout', 'modules/accountservice', 'viewmodels/admin/accountForm'], f
     Account.prototype.add = function() {
     	var self = this;
     	
-		AccountForm.show(new Object()).then(function() {
+		AccountForm.show('Create', new Object()).then(function() {
 			self.refreshAccountList();
 		});
+    };
+    
+    Account.prototype.edit = function(accountId) {
+    	var self = this;
+    	
+    	accountService.getAccount(accountId).done(function(account) {
+    		AccountForm.show('Edit', account).then(function() {
+    			self.refreshAccountList();
+    		});
+    	});
     };
     
     return Account;

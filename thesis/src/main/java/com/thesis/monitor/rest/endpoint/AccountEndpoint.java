@@ -1,6 +1,9 @@
 package com.thesis.monitor.rest.endpoint;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -16,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thesis.monitor.beans.AccountFormBean;
 import com.thesis.monitor.beans.ResultBean;
 import com.thesis.monitor.database.entity.Account;
+import com.thesis.monitor.enums.AccountType;
 import com.thesis.monitor.objects.ObjectList;
 import com.thesis.monitor.rest.handler.AccountHandler;
 
@@ -40,6 +44,15 @@ public class AccountEndpoint {
 		return accountHandler.getAccount(accountId);
 	}
 	
+	@GET
+	@Path("/accounttype")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public List<String> getAccountTypeList() {
+		return Stream.of(AccountType.values())
+				.map(AccountType::name)
+				.collect(Collectors.toList());
+	}
+	
 	@POST
 	@Path("/save")
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -51,7 +64,7 @@ public class AccountEndpoint {
 		if(accountForm.getId() == null) {
 			result = accountHandler.createAccount(accountForm);
 		} else {
-			result = null;
+			result = new ResultBean(Boolean.FALSE, "Edit not yet allowed!");
 		}
 		
 		return result;

@@ -33,21 +33,32 @@ public class AccountHandlerImpl implements AccountHandler {
 	public ResultBean createAccount(AccountFormBean accountForm) {
 		final ResultBean result;
 		
-		if(accountService.isExistsByUsername(accountForm.getUsername())) {
-			result = new ResultBean(Boolean.FALSE, "Username already exists.");
-		} else {
-			final Account account = new Account();
-			result = new ResultBean();
-			
-			setAccount(accountForm, account);
-			
-			if(accountService.insert(account) != null) {
-				result.setSuccess(Boolean.TRUE);
-				result.setMessage("Successfully created account with username \"" + accountForm.getUsername() + "\".");
+		if(accountForm.getUsername() != null &&
+				accountForm.getItemsPerPage() != null &&
+				accountForm.getAccountType() != null &&
+				accountForm.getPassword() != null) {
+			if(accountForm.getUsername().matches("[A-Za-z0-9_]+")) {
+				if(accountService.isExistsByUsername(accountForm.getUsername())) {
+					result = new ResultBean(Boolean.FALSE, "Username already exists.");
+				} else {
+					final Account account = new Account();
+					result = new ResultBean();
+					
+					setAccount(accountForm, account);
+					
+					if(accountService.insert(account) != null) {
+						result.setSuccess(Boolean.TRUE);
+						result.setMessage("Successfully created account with username \"" + accountForm.getUsername() + "\".");
+					} else {
+						result.setSuccess(Boolean.FALSE);
+						result.setMessage("Failed to create account with username \"" + accountForm.getUsername() + "\".");
+					}
+				}
 			} else {
-				result.setSuccess(Boolean.FALSE);
-				result.setMessage("Failed to create account with username \"" + accountForm.getUsername() + "\".");
+				result = new ResultBean(Boolean.FALSE, "Invalid characters used in username field.");
 			}
+		} else {
+			result = new ResultBean(Boolean.FALSE, "All fields must be filled.");
 		}
 		
 		return result;

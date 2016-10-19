@@ -32,6 +32,35 @@ public class AccountHandlerImpl implements AccountHandler {
 	@Override
 	public ResultBean createAccount(AccountFormBean accountForm) {
 		final ResultBean result;
+		final ResultBean temp = validateAccountForm(accountForm);
+		
+		if(temp.isSuccess()) {
+			final Account account = new Account();
+			result = new ResultBean();
+			
+			setAccount(accountForm, account);
+			
+			if(accountService.insert(account) != null) {
+				result.setSuccess(Boolean.TRUE);
+				result.setMessage("Successfully created account with username \"" + accountForm.getUsername() + "\".");
+			} else {
+				result.setSuccess(Boolean.FALSE);
+				result.setMessage("Failed to create account with username \"" + accountForm.getUsername() + "\".");
+			}
+		} else {
+			result = temp;
+		}
+		
+		return result;
+	}
+	
+	@Override
+	public ResultBean editAccount(AccountFormBean accountForm) {
+		return null;
+	}
+	
+	private ResultBean validateAccountForm(AccountFormBean accountForm) {
+		final ResultBean result;
 		
 		if(accountForm.getUsername() != null &&
 				accountForm.getItemsPerPage() != null &&
@@ -41,18 +70,7 @@ public class AccountHandlerImpl implements AccountHandler {
 				if(accountService.isExistsByUsername(accountForm.getUsername())) {
 					result = new ResultBean(Boolean.FALSE, "Username already exists.");
 				} else {
-					final Account account = new Account();
-					result = new ResultBean();
-					
-					setAccount(accountForm, account);
-					
-					if(accountService.insert(account) != null) {
-						result.setSuccess(Boolean.TRUE);
-						result.setMessage("Successfully created account with username \"" + accountForm.getUsername() + "\".");
-					} else {
-						result.setSuccess(Boolean.FALSE);
-						result.setMessage("Failed to create account with username \"" + accountForm.getUsername() + "\".");
-					}
+					result = new ResultBean(Boolean.TRUE, "");
 				}
 			} else {
 				result = new ResultBean(Boolean.FALSE, "Invalid characters used in username field.");

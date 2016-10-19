@@ -64,7 +64,7 @@ public class AccountEndpoint {
 		if(accountForm.getId() == null) {
 			result = accountHandler.createAccount(accountForm);
 		} else {
-			result = new ResultBean(Boolean.FALSE, "Edit not yet allowed!");
+			result = accountHandler.editAccount(accountForm);
 		}
 		
 		return result;

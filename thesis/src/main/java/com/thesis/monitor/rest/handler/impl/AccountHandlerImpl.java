@@ -35,17 +35,21 @@ public class AccountHandlerImpl implements AccountHandler {
 		final ResultBean temp = validateAccountForm(accountForm);
 		
 		if(temp.isSuccess()) {
-			final Account account = new Account();
-			result = new ResultBean();
-			
-			setAccount(accountForm, account);
-			
-			if(accountService.insert(account) != null) {
-				result.setSuccess(Boolean.TRUE);
-				result.setMessage("Successfully created account with username \"" + accountForm.getUsername() + "\".");
+			if(accountService.isExistsByUsername(accountForm.getUsername())) {
+				result = new ResultBean(Boolean.FALSE, "Username already exists.");
 			} else {
-				result.setSuccess(Boolean.FALSE);
-				result.setMessage("Failed to create account with username \"" + accountForm.getUsername() + "\".");
+				final Account account = new Account();
+				result = new ResultBean();
+				
+				setAccount(accountForm, account);
+				
+				if(accountService.insert(account) != null) {
+					result.setSuccess(Boolean.TRUE);
+					result.setMessage("Successfully created account with username \"" + accountForm.getUsername() + "\".");
+				} else {
+					result.setSuccess(Boolean.FALSE);
+					result.setMessage("Failed to create account with username \"" + accountForm.getUsername() + "\".");
+				}
 			}
 		} else {
 			result = temp;
@@ -56,7 +60,32 @@ public class AccountHandlerImpl implements AccountHandler {
 	
 	@Override
 	public ResultBean editAccount(AccountFormBean accountForm) {
-		return null;
+		final ResultBean result;
+		final ResultBean temp = validateAccountForm(accountForm);
+		
+		Account account = accountService.find(accountForm.getId());
+		
+		if(temp.isSuccess()) {
+			if(accountService.isExistsByUsername(accountForm.getUsername()) &&
+					!account.getUsername().equals(accountForm.getUsername())) {
+				result = new ResultBean(Boolean.FALSE, "Username already exists.");
+			} else {
+				result = new ResultBean();
+				setAccount(accountForm, account);
+				
+				result.setSuccess(accountService.update(account));
+				
+				if(result.isSuccess()) {
+					result.setMessage("Successfully updated account details.");
+				} else {
+					result.setMessage("Failed to update account.");
+				}
+			}
+		} else {
+			result = temp;
+		}
+		
+		return result;
 	}
 	
 	private ResultBean validateAccountForm(AccountFormBean accountForm) {
@@ -65,10 +94,10 @@ public class AccountHandlerImpl implements AccountHandler {
 		if(accountForm.getUsername() != null &&
 				accountForm.getItemsPerPage() != null &&
 				accountForm.getAccountType() != null &&
-				accountForm.getPassword() != null) {
+				accountForm.getId() != null || accountForm.getPassword() != null) {
 			if(accountForm.getUsername().matches("[A-Za-z0-9_]+")) {
-				if(accountService.isExistsByUsername(accountForm.getUsername())) {
-					result = new ResultBean(Boolean.FALSE, "Username already exists.");
+				if(accountForm.getPassword() != null && accountForm.getPassword().length() < 3) {
+					result = new ResultBean(Boolean.FALSE, "Password must be at least 3 characters long.");
 				} else {
 					result = new ResultBean(Boolean.TRUE, "");
 				}
@@ -85,7 +114,7 @@ public class AccountHandlerImpl implements AccountHandler {
 	private void setAccount(AccountFormBean accountForm, Account account) {
 		account.setAccountType(accountForm.getAccountType());
 		account.setItemsPerPage(accountForm.getItemsPerPage());
-		account.setPassword(EncryptionUtil.getMd5(accountForm.getPassword()));
+		if(accountForm.getPassword() != null) account.setPassword(EncryptionUtil.getMd5(accountForm.getPassword()));
 		account.setUsername(accountForm.getUsername());
 	}
 }

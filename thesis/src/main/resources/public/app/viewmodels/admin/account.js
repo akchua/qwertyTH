@@ -1,4 +1,4 @@
-define(['knockout','durandal/app', 'modules/accountservice', 'viewmodels/admin/accountForm'], function (ko, app, accountService, AccountForm) {
+define(['knockout','durandal/app', 'modules/accountservice', 'viewmodels/admin/accountForm', 'viewmodels/admin/accountSetting'], function (ko, app, accountService, AccountForm, accountSetting) {
     var Account = function() {
     	this.accountList = ko.observable();
     	

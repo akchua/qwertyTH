@@ -28,11 +28,6 @@ public class AccountHandlerImpl implements AccountHandler {
 	public Account getAccount(Long accountId) {
 		return accountService.find(accountId);
 	}
-	
-	@Override
-	public Account getAccount(String accountUsername) {
-		return accountService.findByUsername(accountUsername);
-	}
 
 	@Override
 	public ResultBean createAccount(AccountFormBean accountForm) {

@@ -29,10 +29,6 @@ public class AccountServiceImpl
 		return dao.findByUsernameAndPassword(username, password);
 	}
 	
-	
-	public Account findByUsername(String username) {
-		return dao.findByUsername(username);
-	}
 
 	@Override
 	public Boolean isExistsByUsername(String username) {

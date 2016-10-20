@@ -11,8 +11,6 @@ public interface AccountHandler {
 	
 	Account getAccount(Long accountId);
 	
-	Account getAccount(String accountUsername);
-	
 	ResultBean createAccount(AccountFormBean accountForm);
 	
 	ResultBean editAccount(AccountFormBean accountForm);

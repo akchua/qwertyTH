@@ -53,13 +53,6 @@ public class AccountEndpoint {
 				.collect(Collectors.toList());
 	}
 	
-	@GET
-	@Path("/getaccbyun")
-	@Produces({ MediaType.APPLICATION_JSON })
-	public Account getAccount(@QueryParam("accountUsername") String accountUsername) {
-		return accountHandler.getAccount(accountUsername);
-	}
-	
 	@POST
 	@Path("/save")
 	@Produces({ MediaType.APPLICATION_JSON })

@@ -19,15 +19,6 @@ define(['jquery'], function ($) {
 			});
 		},
 		
-		getAccountByUsername: function(accountUsername) {
-			return $.ajax({
-				url: '/services/account/getaccbyun',
-				data: {
-					accountUsername : accountUsername
-				}
-			});
-		},
-		
 		getAccountTypeList: function() {
 			return $.ajax({
 				url: '/services/account/accounttype'

@@ -1,0 +1,44 @@
+<div id="accountFormModal" class="modal-content">
+	<div class="modal-content">
+	  	<div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" data-bind="click:cancel">&times;</button>
+	        <h4 class="modal-title">Account Settings</h4>
+	     </div>
+	     <div class="modal-body">
+	     	<p>
+	        	<form>
+	        	  <div class="form-group">
+				    <label for="type">Account Type:</label>
+				    <span data-bind="text: accountType"></span> 
+				  </div>
+				  <div class="form-group">
+				    <label for="email">Username:</label>
+				    <input data-bind="value: accountSettingsModel.username" type="email" class="form-control" id="email">
+				  </div>
+				  <div class="form-group">
+				    <label for="pwd">Password:</label>
+				    <input data-bind="value: accountSettingsModel.password" type="password" class="form-control" id="pwd">
+				  </div>
+				  <div class="form-group">
+				    <label for="pwdnew">New Password:</label>
+				    <input data-bind="value: accountSettingsModel.passwordNew" type="password" class="form-control" id="pwdnew">
+				  </div>
+				  <div class="form-group">
+				    <label for="pwdnew2">Confirm New Password:</label>
+				    <input data-bind="value: accountSettingsModel.passwordNewConfirm" type="password" class="form-control" id="pwdnew2">
+				  </div>
+	        	  <div class="form-group">
+				    <label for="userType">Items Per Page:</label>
+					<div class="btn-group">
+					  <select data-bind="options: itemsPerPageList, value: accountSettingsModel.itemsPerPage, optionsCaption: 'Select Items Per Page'"></select>
+					</div>
+				  </div>
+				</form>
+	        </p>
+	      </div>
+	      <div class="modal-footer">
+			<button data-bind="click: save" type="submit" class="btn btn-default glyphicon glyphicon-ok">Submit</button>
+	        <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal" data-bind="click:cancel">Cancel</button>
+	      </div>
+	</div>
+</div> <!-- modal content -->

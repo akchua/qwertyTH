@@ -69,4 +69,11 @@ public class AccountEndpoint {
 		
 		return result;
 	}
+	
+	@POST
+	@Path("/remove")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public ResultBean removeAccount(@FormParam("accountId") Long accountId) {
+		return accountHandler.removeAccount(accountId);
+	}
 }

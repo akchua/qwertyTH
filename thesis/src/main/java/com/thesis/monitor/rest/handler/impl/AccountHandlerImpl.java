@@ -88,6 +88,29 @@ public class AccountHandlerImpl implements AccountHandler {
 		return result;
 	}
 	
+	@Override
+	public ResultBean removeAccount(Long accountId) {
+		final ResultBean result;
+		
+		Account account = accountService.find(accountId);
+		
+		if(account != null) {
+			result = new ResultBean();
+			
+			result.setSuccess(accountService.delete(account));
+			
+			if(result.isSuccess()) {
+				result.setMessage("Succcessfully removed account \"" + account.getUsername() + "\".");
+			} else {
+				result.setMessage("Failed to remove account \"" + account.getUsername() + "\".");
+			}
+		} else {
+			result = new ResultBean(Boolean.FALSE, "Failed to remove account. Account does not exist!");
+		}
+		
+		return result;
+	}
+	
 	private ResultBean validateAccountForm(AccountFormBean accountForm) {
 		final ResultBean result;
 		

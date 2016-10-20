@@ -14,4 +14,6 @@ public interface AccountHandler {
 	ResultBean createAccount(AccountFormBean accountForm);
 	
 	ResultBean editAccount(AccountFormBean accountForm);
+	
+	ResultBean removeAccount(Long accountId);
 }

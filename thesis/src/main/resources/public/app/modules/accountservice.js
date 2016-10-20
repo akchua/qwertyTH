@@ -33,6 +33,16 @@ define(['jquery'], function ($) {
 					accountFormData: accountFormData
 				}
 			});
+		},
+		
+		removeAccount: function(accountId) {
+			return $.ajax({
+				url: '/services/account/remove',
+				method: 'POST',
+				data: {
+					accountId: accountId
+				}
+			});
 		}
 	};
 });

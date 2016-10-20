@@ -82,26 +82,20 @@ public class UserBoardWatchlistHandlerImpl implements UserBoardWatchlistHandler 
 		final ResultBean result;
 		
 		final Long userId = AccountContextHolder.getAccount().getAccountId();
-		final Account board = accountService.find(boardId);
+		final UserBoardWatchlist ubw = userBoardWatchlistService.findByBoardAndUserId(boardId, userId);
 		
-		if(board != null && board.getAccountType().equals(AccountType.BOARD)) {
-			final UserBoardWatchlist ubw = userBoardWatchlistService.findByBoardAndUserId(boardId, userId);
+		if(ubw != null) {
+			result = new ResultBean();
 			
-			if(ubw != null) {
-				result = new ResultBean();
-				
-				result.setSuccess(userBoardWatchlistService.delete(ubw));
-				
-				if(result.isSuccess()) {
-					result.setMessage("Successfully removed Board \"" + board.getUsername() + "\" from your watchlist.");
-				} else {
-					result.setMessage("Failed to remove Board \"" + board.getUsername() + "\" from your watchlist.");
-				}
+			result.setSuccess(userBoardWatchlistService.delete(ubw));
+			
+			if(result.isSuccess()) {
+				result.setMessage("Successfully removed Board of id \"" + boardId + "\" from your watchlist.");
 			} else {
-				result = new ResultBean(Boolean.FALSE, "Board \"" + board.getUsername() + "\" not on your watchlist.");
+				result.setMessage("Failed to remove Board of id \"" + boardId + "\" from your watchlist.");
 			}
 		} else {
-			result = new ResultBean(Boolean.FALSE, "Board \"" + board.getUsername() + "\" does not exist.");
+			result = new ResultBean(Boolean.FALSE, "Board of id \"" + boardId + "\" not on your watchlist.");
 		}
 		
 		return result;

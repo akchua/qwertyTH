@@ -47,6 +47,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.thesis.monitor.database.entity.Account</value>
+				<value>com.thesis.monitor.database.entity.UserBoardWatchlist</value>
 			</list>
 		</property>
 	</bean>

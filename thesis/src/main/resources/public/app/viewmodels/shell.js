@@ -14,9 +14,20 @@
         
         activate: function () {
         	var self = this;
-        	var routes = homeroute;
+        	var routes;
         	
-        	routes = routes.concat(adminroute);
+        	switch(self.account.accountType) {
+        		case 'ADMINISTRATOR':
+        			routes = homeroute;
+        			routes = routes.concat(adminroute);
+        			break;
+        		case 'USER':
+        			routes = homeroute;
+        			break;
+        		case 'BOARD':
+        			routes = homeroute;
+        			break;
+        	}
         	
         	$.each(routes, function(index, route) {
                 if (route.childRoutes === undefined)

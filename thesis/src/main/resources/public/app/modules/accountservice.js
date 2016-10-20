@@ -19,6 +19,15 @@ define(['jquery'], function ($) {
 			});
 		},
 		
+		getAccountByUsername: function(accountUsername) {
+			return $.ajax({
+				url: '/services/account/getaccbyun',
+				data: {
+					accountUsername : accountUsername
+				}
+			});
+		},
+		
 		getAccountTypeList: function() {
 			return $.ajax({
 				url: '/services/account/accounttype'
@@ -33,6 +42,16 @@ define(['jquery'], function ($) {
 					accountFormData: accountFormData
 				}
 			});
+		},
+		
+		deleteAccount: function(accountId) {
+			return $.ajax({
+				url: '/services/account/delete',
+				method: 'POST',
+				data: {
+					accountId : accountId
+				}
+			});
 		}
-	};
+	}
 });

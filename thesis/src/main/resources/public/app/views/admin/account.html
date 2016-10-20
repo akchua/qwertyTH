@@ -29,7 +29,7 @@
 							<td data-bind="text: account.accountType"></td>
 							<td>
 								<button data-bind="click: function() { $parent.edit(account.id) }" type="button" class="btn btn-default glyphicon glyphicon-pencil"></button>
-								<button type="button" class="btn btn-default glyphicon glyphicon-remove"></button>
+								<button data-bind="click: function() { $parent.remove(account.id) }" type="button" class="btn btn-default glyphicon glyphicon-remove"></button>
 							</td>
 						</tr>
 					</tbody>

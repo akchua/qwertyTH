@@ -1,4 +1,4 @@
-define(['knockout', 'modules/accountservice', 'viewmodels/admin/accountForm'], function (ko, accountService, AccountForm) {
+define(['knockout','durandal/app', 'modules/accountservice', 'viewmodels/admin/accountForm'], function (ko, app, accountService, AccountForm) {
     var Account = function() {
     	this.accountList = ko.observable();
     	
@@ -54,6 +54,21 @@ define(['knockout', 'modules/accountservice', 'viewmodels/admin/accountForm'], f
     		});
     	});
     };
+    
+    Account.prototype.remove = function(accountId) {
+    	var self = this;
+    	app.showMessage('Are you sure you want to remove this account?',
+				'Confirm Remove',
+				[{ text: 'Yes', value: true }, { text: 'No', value: false }])
+		.then(function(confirm) {
+	    	accountService.deleteAccount(accountId).done(function(result) {
+	    		self.refreshAccountList();
+	    	});
+		})
+    	
+    };
+    
+    
     
     return Account;
 });

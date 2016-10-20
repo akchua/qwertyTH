@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'durandal/app', 'modules/securityservice'], function (router, app, securityService) {
+﻿define(['plugins/router', 'durandal/app', 'modules/securityservice', 'modules/accountservice', 'viewmodels/admin/accountSettings'], function (router, app, securityService, accountService, accountSettings) {
 	var homeroute = [
 	    { route: ['', 'home'], moduleId: 'viewmodels/home', title: 'Home', nav: true }
 	];
@@ -41,5 +41,6 @@
         		location.href = '/';
         	});
         }
+        
     };
 });

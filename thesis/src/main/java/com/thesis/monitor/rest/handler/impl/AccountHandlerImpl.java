@@ -28,6 +28,11 @@ public class AccountHandlerImpl implements AccountHandler {
 	public Account getAccount(Long accountId) {
 		return accountService.find(accountId);
 	}
+	
+	@Override
+	public Account getAccount(String accountUsername) {
+		return accountService.findByUsername(accountUsername);
+	}
 
 	@Override
 	public ResultBean createAccount(AccountFormBean accountForm) {
@@ -63,6 +68,7 @@ public class AccountHandlerImpl implements AccountHandler {
 		final ResultBean result;
 		final ResultBean temp = validateAccountForm(accountForm);
 		
+		
 		Account account = accountService.find(accountForm.getId());
 		
 		if(temp.isSuccess()) {
@@ -87,6 +93,22 @@ public class AccountHandlerImpl implements AccountHandler {
 		
 		return result;
 	}
+	
+	@Override
+	public ResultBean deleteAccount(Long accountId) {
+		System.out.println(accountId);
+		
+		final ResultBean result = new ResultBean();
+		
+		Account account = accountService.find(accountId);
+		account.setValid(Boolean.FALSE);
+		
+		accountService.update(account);
+		
+		result.setMessage("Succesfully deleted account.");
+		return result;
+	}
+	
 	
 	private ResultBean validateAccountForm(AccountFormBean accountForm) {
 		final ResultBean result;

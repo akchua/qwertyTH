@@ -28,6 +28,11 @@ public class AccountServiceImpl
 	public Account findByUsernameAndPassword(String username, String password) {
 		return dao.findByUsernameAndPassword(username, password);
 	}
+	
+	
+	public Account findByUsername(String username) {
+		return dao.findByUsername(username);
+	}
 
 	@Override
 	public Boolean isExistsByUsername(String username) {

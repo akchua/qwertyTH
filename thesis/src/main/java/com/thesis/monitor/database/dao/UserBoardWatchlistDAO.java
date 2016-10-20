@@ -11,5 +11,4 @@ import com.thesis.monitor.database.prototype.UserBoardWatchlistPrototype;
 public interface UserBoardWatchlistDAO 
 		extends DAO<UserBoardWatchlist, Long>, UserBoardWatchlistPrototype {
 
-	
 }

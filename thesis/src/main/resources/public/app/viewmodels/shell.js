@@ -7,6 +7,10 @@
 	    { route: 'account', moduleId: 'viewmodels/admin/account', title: 'Account', nav: true, hash: '#account' }              
 	];
 	
+	var userroute = [
+	    { route: 'watchlist', moduleId: 'viewmodels/user/watchlist', title: 'Watchlist', nav: true, hash: '#watchlist' }             
+	];
+	
     return {
         router: router,
         
@@ -23,6 +27,7 @@
         			break;
         		case 'USER':
         			routes = homeroute;
+        			routes = routes.concat(userroute);
         			break;
         		case 'BOARD':
         			routes = homeroute;

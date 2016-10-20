@@ -33,4 +33,9 @@ public class AccountServiceImpl
 	public Boolean isExistsByUsername(String username) {
 		return dao.findByUsername(StringUtils.trimToEmpty(username)) != null;
 	}
+
+	@Override
+	public Account findByUsername(String username) {
+		return dao.findByUsername(username);
+	}
 }

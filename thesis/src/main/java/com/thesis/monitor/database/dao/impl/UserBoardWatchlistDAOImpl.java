@@ -25,7 +25,7 @@ public class UserBoardWatchlistDAOImpl
 	public ObjectList<Account> findAllBoardsWithPaging(int pageNumber, int resultsPerPage, Long userId) {
 		final Junction conjunction = Restrictions.conjunction();
 		conjunction.add(Restrictions.eq("isValid", Boolean.TRUE));
-		conjunction.add(Restrictions.eq("userId", userId));
+		conjunction.add(Restrictions.eq("user.id", userId));
 		
 		final ObjectList<UserBoardWatchlist> ubws = 
 				findAllByCriterion(pageNumber, resultsPerPage, null, null, null, null, conjunction);
@@ -44,7 +44,7 @@ public class UserBoardWatchlistDAOImpl
 	public ObjectList<Account> findAllUsersWithPaging(int pageNumber, int resultsPerPage, Long boardId) {
 		final Junction conjunction = Restrictions.conjunction();
 		conjunction.add(Restrictions.eq("isValid", Boolean.TRUE));
-		conjunction.add(Restrictions.eq("boardId", boardId));
+		conjunction.add(Restrictions.eq("board.id", boardId));
 		
 		final ObjectList<UserBoardWatchlist> ubws = 
 				findAllByCriterion(pageNumber, resultsPerPage, null, null, null, null, conjunction);
@@ -57,5 +57,15 @@ public class UserBoardWatchlistDAOImpl
 		userList.setTotal(ubws.getTotal());
 		
 		return userList;
+	}
+
+	@Override
+	public UserBoardWatchlist findByBoardAndUserId(Long boardId, Long userId) {
+		final Junction conjunction = Restrictions.conjunction();
+		conjunction.add(Restrictions.eq("isValid", Boolean.TRUE));
+		conjunction.add(Restrictions.eq("board.id", boardId));
+		conjunction.add(Restrictions.eq("user.id", userId));
+		
+		return findUniqueResult(null, null, null, conjunction);
 	}
 }

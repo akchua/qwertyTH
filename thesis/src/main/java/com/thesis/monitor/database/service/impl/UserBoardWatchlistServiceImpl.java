@@ -33,4 +33,14 @@ public class UserBoardWatchlistServiceImpl
 	public ObjectList<Account> findAllUsersWithPaging(int pageNumber, int resultsPerPage, Long boardId) {
 		return dao.findAllUsersWithPaging(pageNumber, resultsPerPage, boardId);
 	}
+
+	@Override
+	public Boolean isExistByBoardAndUserId(Long boardId, Long userId) {
+		return dao.findByBoardAndUserId(boardId, userId) != null;
+	}
+
+	@Override
+	public UserBoardWatchlist findByBoardAndUserId(Long boardId, Long userId) {
+		return dao.findByBoardAndUserId(boardId, userId);
+	}
 }

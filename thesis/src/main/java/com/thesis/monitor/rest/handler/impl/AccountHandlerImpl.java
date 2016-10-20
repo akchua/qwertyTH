@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.thesis.monitor.AccountContextHolder;
 import com.thesis.monitor.beans.AccountFormBean;
 import com.thesis.monitor.beans.ResultBean;
 import com.thesis.monitor.database.entity.Account;
@@ -21,7 +22,7 @@ public class AccountHandlerImpl implements AccountHandler {
 	
 	@Override
 	public ObjectList<Account> getAccountObjectList(Integer pageNumber, String searchKey) {
-		return accountService.findAllWithPaging(pageNumber, 10, searchKey);
+		return accountService.findAllWithPaging(pageNumber, AccountContextHolder.getItemsPerPage(), searchKey);
 	}
 
 	@Override

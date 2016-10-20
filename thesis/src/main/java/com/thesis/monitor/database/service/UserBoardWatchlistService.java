@@ -11,5 +11,5 @@ import com.thesis.monitor.database.prototype.UserBoardWatchlistPrototype;
 public interface UserBoardWatchlistService
 		extends Service<UserBoardWatchlist, Long>, UserBoardWatchlistPrototype {
 
-	
+	Boolean isExistByBoardAndUserId(Long boardId, Long userId);
 }

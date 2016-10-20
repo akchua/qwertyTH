@@ -1,0 +1,39 @@
+<br><br><br>
+	<div class = "container-fluid">
+		<div class = "row">
+			<div class = "col-md-6 text-center">
+				
+			</div>
+			<div class = "col-md-6 text-center">
+			</div>
+		</div>
+		<br><br>
+		<div class = "row">
+			<div class = "col-md-6 col-md-offset-3">
+				<table class = "table">
+					<thead>
+						<tr>
+							<th>Board ID</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody data-bind="foreach: { data: boardList, as: 'board' } ">
+						<tr>
+							<td data-bind="text: board.id"></td>
+							<td data-bind="text: board.username"></td>
+							<td>
+								<button data-bind="click: function() { $parent.remove(board.id, board.username) }" type="button" class="btn btn-default glyphicon glyphicon-remove"></button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<br>
+		<div class = "row">
+			<div class = "col-md-6 text-center">
+				<button data-bind="click: add" type="button" class="btn btn-default glyphicon glyphicon-plus"> Add Board to Watchlist</button>
+			</div>
+				<div data-bind="widget: { kind: 'pager', config: { numberOfPagesToShow: 5, itemsPerPage: itemsPerPage, totalItems: totalItems, currentPage: currentPage } }" class="col-md-6 text-center"></div>
+		</div>
+	</div>

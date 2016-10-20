@@ -8,4 +8,6 @@ public interface AccountPrototype {
 	ObjectList<Account> findAllWithPaging(int pageNumber, int resultsPerPage, String searchKey);
 	
 	Account findByUsernameAndPassword(String username, String password);
+	
+	Account findByUsername(String username);
 }

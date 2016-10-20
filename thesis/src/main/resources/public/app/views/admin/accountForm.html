@@ -1,38 +1,34 @@
 <div id="accountFormModal" class="modal-content">
-	<div class="modal-content">
+	<form>
 	  	<div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" data-bind="click:cancel">&times;</button>
 	        <h4 class="modal-title"><span data-bind="text: preTitle"></span> an Account</h4>
 	     </div>
 	     <div class="modal-body">
-	     	<p>
-	        	<form>
-	        	  <div data-bind="if: preTitle == 'Create'" class="form-group">
-				    <label for="userType">User Type:</label>
-					<div class="btn-group">
-					  <select data-bind="options: accountTypeList, value: accountFormModel.accountType, optionsCaption: 'Select Account Type'"></select>
-					</div>
-				  </div>
-				  <div class="form-group">
-				    <label for="email">Username:</label>
-				    <input data-bind="value: accountFormModel.username" type="email" class="form-control" id="email">
-				  </div>
-				  <div class="form-group">
-				    <label for="pwd">Password:</label>
-				    <input data-bind="value: accountFormModel.password" type="password" class="form-control" id="pwd">
-				  </div>
-	        	  <div class="form-group">
-				    <label for="userType">Items Per Page:</label>
-					<div class="btn-group">
-					  <select data-bind="options: itemsPerPageList, value: accountFormModel.itemsPerPage, optionsCaption: 'Select Items Per Page'"></select>
-					</div>
-				  </div>
-				</form>
-	        </p>
+        	  <div data-bind="if: preTitle == 'Create'" class="form-group">
+			    <label for="userType">User Type:</label>
+				<div class="btn-group">
+				  <select data-bind="options: accountTypeList, value: accountFormModel.accountType, optionsCaption: 'Select Account Type'"></select>
+				</div>
+			  </div>
+			  <div class="form-group">
+			    <label for="email">Username:</label>
+			    <input data-bind="value: accountFormModel.username" type="text" class="form-control autofocus" id="email">
+			  </div>
+			  <div class="form-group">
+			    <label for="pwd">Password:</label>
+			    <input data-bind="value: accountFormModel.password" type="password" class="form-control" id="pwd">
+			  </div>
+        	  <div class="form-group">
+			    <label for="userType">Items Per Page:</label>
+				<div class="btn-group">
+				  <select data-bind="options: itemsPerPageList, value: accountFormModel.itemsPerPage, optionsCaption: 'Select Items Per Page'"></select>
+				</div>
+			  </div>
 	      </div>
 	      <div class="modal-footer">
 			<button data-bind="click: save" type="submit" class="btn btn-default glyphicon glyphicon-ok">Submit</button>
-	        <button type="button" class="btn btn-default glyphicon glyphicon-remove" data-dismiss="modal" data-bind="click:cancel">Cancel</button>
+	        <button class="btn btn-default glyphicon glyphicon-remove" data-bind="click:cancel">Cancel</button>
 	      </div>
-	</div>
-</div> <!-- modal content -->
+	 </form>
+</div>

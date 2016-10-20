@@ -5,5 +5,4 @@ import com.thesis.monitor.database.prototype.AccountPrototype;
 
 public interface AccountDAO extends DAO<Account, Long>, AccountPrototype {
 
-	Account findByUsername(String username);
 }

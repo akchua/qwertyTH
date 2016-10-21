@@ -89,6 +89,8 @@ public class AccountHandlerImpl implements AccountHandler {
 		return result;
 	}
 	
+	
+	
 	@Override
 	public ResultBean deleteAccount(Long accountId) {
 		System.out.println(accountId);

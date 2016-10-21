@@ -9,6 +9,7 @@ define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/accountservice'],
 		this.itemsPerPageList = ko.observableArray([5, 10, 15, 20]);
 		
 		this.accountFormModel = {
+			id: ko.observable(),
 			username: ko.observable(),
 			password: ko.observable(),
 			itemsPerPage: ko.observable(),

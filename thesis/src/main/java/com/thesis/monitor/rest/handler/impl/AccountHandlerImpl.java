@@ -6,11 +6,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thesis.monitor.AccountContextHolder;
 import com.thesis.monitor.beans.AccountFormBean;
+import com.thesis.monitor.beans.AccountSettingBean;
 import com.thesis.monitor.beans.ResultBean;
 import com.thesis.monitor.database.entity.Account;
 import com.thesis.monitor.database.service.AccountService;
 import com.thesis.monitor.objects.ObjectList;
 import com.thesis.monitor.rest.handler.AccountHandler;
+import com.thesis.monitor.AccountContextHolder;
 import com.thesis.monitor.utility.EncryptionUtil;
 
 @Transactional
@@ -19,6 +21,7 @@ public class AccountHandlerImpl implements AccountHandler {
 
 	@Autowired
 	private AccountService accountService;
+	private AccountContextHolder accountHolder;
 	
 	@Override
 	public ObjectList<Account> getAccountObjectList(Integer pageNumber, String searchKey) {
@@ -86,6 +89,41 @@ public class AccountHandlerImpl implements AccountHandler {
 			result = temp;
 		}
 		
+		return result;
+	}
+	
+	@Override
+	public ResultBean saveAccountSetting(AccountSettingBean accountForm){
+		final ResultBean result;
+		final ResultBean temp = validateAccountForm(accountForm);
+		
+		Account account = accountHolder.getAccount().getAccountEntity();
+		
+		if(temp.isSuccess()) {
+			if (accountForm.getPassword() != null &&
+					accountForm.getPasswordNew() != null &&
+					accountForm.getPasswordNewConfirm() != null &&
+					EncryptionUtil.getMd5(accountForm.getPassword()).equals(account.getPassword()) &&
+					accountForm.getPasswordNew().equals(accountForm.getPasswordNewConfirm())){
+					accountForm.setPassword(accountForm.getPasswordNew());
+					result = new ResultBean (Boolean.TRUE, "");
+			}	else {
+				
+				result = new ResultBean();
+				setAccount(accountForm, account);
+				
+				result.setSuccess(accountService.update(account));
+				
+				if(result.isSuccess()) {
+					result.setMessage("Successfully updated account details.");
+				} else {
+					result.setMessage("Failed to update account.");
+				}
+			}
+				
+		} else {
+			result = temp;
+		}
 		return result;
 	}
 	

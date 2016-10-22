@@ -1,6 +1,7 @@
 package com.thesis.monitor.rest.handler;
 
 import com.thesis.monitor.beans.AccountFormBean;
+import com.thesis.monitor.beans.AccountSettingBean;
 import com.thesis.monitor.beans.ResultBean;
 import com.thesis.monitor.database.entity.Account;
 import com.thesis.monitor.objects.ObjectList;
@@ -16,4 +17,7 @@ public interface AccountHandler {
 	ResultBean editAccount(AccountFormBean accountForm);
 	
 	ResultBean removeAccount(Long accountId);
+
+	ResultBean saveAccountSetting(AccountSettingBean accountForm);
+
 }

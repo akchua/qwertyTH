@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thesis.monitor.beans.AccountFormBean;
+import com.thesis.monitor.beans.AccountSettingBean;
 import com.thesis.monitor.beans.ResultBean;
 import com.thesis.monitor.database.entity.Account;
 import com.thesis.monitor.enums.AccountType;
@@ -67,6 +68,16 @@ public class AccountEndpoint {
 			result = accountHandler.editAccount(accountForm);
 		}
 		
+		return result;
+	}
+	
+	@POST
+	@Path("/savesettings")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public ResultBean saveAccountSettings(@FormParam("accountFormData") String accountFormData) throws IOException {
+		final ResultBean result;
+		final AccountSettingBean accountForm = new ObjectMapper().readValue(accountFormData, AccountSettingBean.class);
+		result = accountHandler.saveAccountSetting(accountForm);
 		return result;
 	}
 	

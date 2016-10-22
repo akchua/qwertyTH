@@ -35,6 +35,16 @@ define(['jquery'], function ($) {
 			});
 		},
 		
+		saveAccountSettings: function(accountFormData) {
+			return $.ajax({
+				url: '/services/account/savesettings',
+				method: 'POST',
+				data: {
+					accountFormData: accountFormData
+				}
+			});
+		},
+		
 		removeAccount: function(accountId) {
 			return $.ajax({
 				url: '/services/account/remove',

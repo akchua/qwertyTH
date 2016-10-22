@@ -11,6 +11,7 @@ public class AccountFormBean extends FormBean {
 	private Integer itemsPerPage;
 	
 	private AccountType accountType;
+	
 
 	public String getUsername() {
 		return username;

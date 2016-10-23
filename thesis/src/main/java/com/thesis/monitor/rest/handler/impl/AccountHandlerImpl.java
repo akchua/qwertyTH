@@ -12,7 +12,6 @@ import com.thesis.monitor.database.entity.Account;
 import com.thesis.monitor.database.service.AccountService;
 import com.thesis.monitor.objects.ObjectList;
 import com.thesis.monitor.rest.handler.AccountHandler;
-import com.thesis.monitor.AccountContextHolder;
 import com.thesis.monitor.utility.EncryptionUtil;
 
 @Transactional
@@ -35,6 +34,7 @@ public class AccountHandlerImpl implements AccountHandler {
 
 	@Override
 	public ResultBean createAccount(AccountFormBean accountForm) {
+		System.out.println("In create account in handler");
 		final ResultBean result;
 		final ResultBean temp = validateAccountForm(accountForm);
 		
@@ -100,13 +100,20 @@ public class AccountHandlerImpl implements AccountHandler {
 		Account account = accountHolder.getAccount().getAccountEntity();
 		
 		if(temp.isSuccess()) {
-			if (accountForm.getPassword() != null &&
-					accountForm.getPasswordNew() != null &&
-					accountForm.getPasswordNewConfirm() != null &&
-					EncryptionUtil.getMd5(accountForm.getPassword()).equals(account.getPassword()) &&
-					accountForm.getPasswordNew().equals(accountForm.getPasswordNewConfirm())){
+			if (accountForm.getPasswordNew() != null &&
+					accountForm.getPasswordNewConfirm() != null){
+				if(accountForm.getPassword() == null)
+					result = new ResultBean (Boolean.FALSE, "Must provide the old password");
+				else if (!EncryptionUtil.getMd5(accountForm.getPassword()).equals(account.getPassword()))
+					result = new ResultBean (Boolean.FALSE, "Old password does not match.");
+				else if (accountForm.getPassword().equals(accountForm.getPasswordNew()))
+					result = new ResultBean (Boolean.FALSE, "New password is the same as old password.");
+				else if (!accountForm.getPasswordNew().equals(accountForm.getPasswordNewConfirm()))
+					result = new ResultBean(Boolean.FALSE, "Passwords do not match.");
+				else{
 					accountForm.setPassword(accountForm.getPasswordNew());
-					result = new ResultBean (Boolean.TRUE, "");
+					result = editAccount(accountForm);
+				}
 			}	else {
 				
 				result = new ResultBean();

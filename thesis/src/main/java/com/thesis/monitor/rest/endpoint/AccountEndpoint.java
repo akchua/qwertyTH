@@ -58,6 +58,7 @@ public class AccountEndpoint {
 	@Path("/save")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public ResultBean saveAccount(@FormParam("accountFormData") String accountFormData) throws IOException {
+		
 		final ResultBean result;
 		
 		final AccountFormBean accountForm = new ObjectMapper().readValue(accountFormData, AccountFormBean.class);
@@ -67,6 +68,7 @@ public class AccountEndpoint {
 		} else {
 			result = accountHandler.editAccount(accountForm);
 		}
+		
 		
 		return result;
 	}

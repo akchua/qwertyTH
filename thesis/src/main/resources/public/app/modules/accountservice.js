@@ -26,6 +26,7 @@ define(['jquery'], function ($) {
 		},
 		
 		saveAccount: function(accountFormData) {
+			alert(accountFormData)
 			return $.ajax({
 				url: '/services/account/save',
 				method: 'POST',

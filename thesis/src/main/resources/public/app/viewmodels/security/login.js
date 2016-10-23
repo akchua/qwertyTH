@@ -1,4 +1,4 @@
-define(['durandal/app', 'knockout', 'modules/securityservice'], function (app, ko, securityService) {
+define(['plugins/dialog', 'durandal/app', 'knockout', 'modules/securityservice', 'viewmodels/security/registration'], function (dialog, app, ko, securityService, registration) {
 	var Login = function() {
 		this.username = ko.observable();
 		
@@ -22,6 +22,12 @@ define(['durandal/app', 'knockout', 'modules/securityservice'], function (app, k
 			}
 		});
 	};
+	
+	Login.prototype.add = function() {
+    	var self = this;
+		registration.show(new Object()).done(function() {});
+    };
+	
 	
     return Login;
 });
